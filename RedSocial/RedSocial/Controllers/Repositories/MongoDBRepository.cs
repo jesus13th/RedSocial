@@ -13,7 +13,7 @@ namespace RedSocial.Controllers {
         private IMongoCollection<User> collection;
 
         public MongoDBRepository() {
-            var settings = MongoClientSettings.FromUrl(new MongoUrl("mongodb://jesus13th:Roboto911@cluster0-shard-00-00.e8gml.mongodb.net:27017,cluster0-shard-00-01.e8gml.mongodb.net:27017,cluster0-shard-00-02.e8gml.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-mv6391-shard-0&authSource=admin&retryWrites=true&w=majority"));
+            var settings = MongoClientSettings.FromUrl(new MongoUrl("mongodb://jesus13th:abril21@cluster0-shard-00-00.e8gml.mongodb.net:27017,cluster0-shard-00-01.e8gml.mongodb.net:27017,cluster0-shard-00-02.e8gml.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-mv6391-shard-0&authSource=admin&retryWrites=true&w=majority"));
             client = new MongoClient(settings);
             collection = client.GetDatabase("RedSocial").GetCollection<User>("Users");
         }

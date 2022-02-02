@@ -61,10 +61,10 @@ namespace RedSocial.Views {
             }
         }
         private async void Login(User user) {
-            if (true) {
+            /*if (true) {
                 await SecureStorage.SetAsync("Password", user.Password);
                 await SecureStorage.SetAsync("Password", user.Email);
-            }
+            }*/
             await Navigation.PushAsync(new MainPage());
         }
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e) {
