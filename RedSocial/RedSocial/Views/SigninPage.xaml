@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Registro"
+             x:Class="RedSocial.Views.SigninPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Image Source="icon.png" WidthRequest="200" HeightRequest="200" Margin="0, 40"/>
+            <Label Text="Nombre de usuario" TextColor="Black" FontSize="Body"/>
+            <Entry x:Name="userNameEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body"/>
+
+            <Label Text="Correo" TextColor="Black" FontSize="Body"/>
+            <Entry x:Name="emailEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body"/>
+            
+            <Label Text="Contraseña" TextColor="Black" FontSize="Body" />
+            <Grid ColumnDefinitions="7*, 1*, 2*">
+                <Entry x:Name="passwordEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body" IsPassword="True" Grid.Column="0"/>
+                <CheckBox Grid.Column="1"/>
+                <Label Text="Mostrar" TextColor="Black" VerticalOptions="Center" Grid.Column="2"/>
+            </Grid>
+            <Label Text="Repetir Contraseña" TextColor="Black" FontSize="Body" />
+            <Entry x:Name="repasswordEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body" IsPassword="True" Grid.Column="0"/>
+            <Label Text="Fecha de nacimiento" />
+            <DatePicker x:Name="bornDatePicker"/>
+            <Button x:Name="singin" Text="Crear cuenta" Margin="0, 0" HeightRequest="60" Clicked="singin_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

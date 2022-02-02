@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            Title="Red Social"
+             x:Class="RedSocial.Views.LoginPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Options" IconImageSource="menu.png" Order="Primary" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="20" VerticalOptions="Center">
+            <Image Source="icon.png" WidthRequest="200" HeightRequest="200" Margin="0, 40"/>
+            <Label Text="Usuario" TextColor="Black" FontSize="Body"/>
+            <Entry x:Name="emailEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body"/>
+            <Label Text="Contraseña" TextColor="Black" FontSize="Body" />
+            <Grid ColumnDefinitions="7*, 1*, 2*">
+                <Entry x:Name="passwordEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body" IsPassword="{Binding IsPassword}" Grid.Column="0"/>
+                <CheckBox Grid.Column="1" CheckedChanged="CheckBox_CheckedChanged"/>
+                <Label Text="Mostrar" TextColor="Black" VerticalOptions="Center" Grid.Column="2"/>
+            </Grid>
+            <Button Text="Ingresar" x:Name="loginBtn" Clicked="loginBtn_Clicked" Margin="0, 0" HeightRequest="60"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
