@@ -9,15 +9,19 @@
     <ContentPage.Content>
         <StackLayout Margin="20" VerticalOptions="Center">
             <Image Source="icon.png" WidthRequest="200" HeightRequest="200" Margin="0, 40"/>
-            <Label Text="Usuario" TextColor="Black" FontSize="Body"/>
+            <Label Text="Correo" TextColor="Black" FontSize="Body"/>
             <Entry x:Name="emailEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body"/>
             <Label Text="Contraseña" TextColor="Black" FontSize="Body" />
-            <Grid ColumnDefinitions="7*, 1*, 2*">
-                <Entry x:Name="passwordEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body" IsPassword="{Binding IsPassword}" Grid.Column="0"/>
-                <CheckBox Grid.Column="1" CheckedChanged="CheckBox_CheckedChanged"/>
-                <Label Text="Mostrar" TextColor="Black" VerticalOptions="Center" Grid.Column="2"/>
+            <Grid ColumnDefinitions="8*, 2*" RowDefinitions="7*, auto">
+                <Entry x:Name="passwordEntry" BackgroundColor="Gray" TextColor="Black" FontSize="Body" IsPassword="True" Grid.Column="0" Grid.RowSpan="2"/>
+                <CheckBox x:Name="showPasswordCheckbox" IsChecked="False" CheckedChanged="CheckBox_CheckedChanged" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" Grid.Row="0"/>
+                <Label Text="Mostrar" TextColor="Black" FontSize="Micro" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" Grid.Row="1"/>
             </Grid>
-            <Button Text="Ingresar" x:Name="loginBtn" Clicked="loginBtn_Clicked" Margin="0, 0" HeightRequest="60"/>
+            <Grid ColumnDefinitions="8*, 2*" RowDefinitions="7*, auto">
+                <Button Text="Ingresar" Margin="0, 0" x:Name="loginBtn" Clicked="loginBtn_Clicked" HeightRequest="60" Grid.Column="0" Grid.RowSpan="2"/>
+                <CheckBox x:Name="RemembermeCheckbox" VerticalOptions="End" HorizontalOptions="Center" Grid.Column="1" Grid.Row="0"/>
+                <Label Text="Recordar" FontSize="Micro" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

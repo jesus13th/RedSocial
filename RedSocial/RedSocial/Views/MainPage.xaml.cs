@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,11 @@ namespace RedSocial.Views {
     public partial class MainPage : TabbedPage {
         public MainPage() {
             InitializeComponent();
+        }
+        protected override bool OnBackButtonPressed() {
+            Debug.Write("No back");
+            
+            return true;
         }
     }
 }

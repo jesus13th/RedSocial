@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Xamarin.CommunityToolkit.Extensions;
+using System.Diagnostics;
 
 namespace RedSocial.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -61,14 +62,16 @@ namespace RedSocial.Views {
             }
         }
         private async void Login(User user) {
-            /*if (true) {
+            if (RemembermeCheckbox.IsChecked) {
+                await SecureStorage.SetAsync("Email", user.Email);
                 await SecureStorage.SetAsync("Password", user.Password);
-                await SecureStorage.SetAsync("Password", user.Email);
-            }*/
-            await Navigation.PushAsync(new MainPage());
+            }
+            await Navigation.PopAsync();
+            Application.Current.MainPage = new NavigationPage(new MainPage());
+            //await Navigation.PushAsync(new NavigationPage());
         }
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e) {
-            passwordEntry.IsPassword = IsPassword = !IsPassword;
+            passwordEntry.IsPassword = !showPasswordCheckbox.IsChecked;
         }
     }
 }
