@@ -48,7 +48,7 @@ namespace RedSocial.Views {
                 passwordEntry.Focus();
                 return;
             }
-            var user = await App.Repository.Read(x => x.Email == email);
+            var user = await App.RepositoryUsers.Read(x => x.Email == email);
 
             if (user == null) {
                 await this.DisplayToastAsync("el correo solicitado no esta registrado");
@@ -67,8 +67,8 @@ namespace RedSocial.Views {
                 await SecureStorage.SetAsync("Password", user.Password);
             }
             await Navigation.PopAsync();
+            App.Instance.userLogged = user;
             Application.Current.MainPage = new NavigationPage(new MainPage());
-            //await Navigation.PushAsync(new NavigationPage());
         }
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e) {
             passwordEntry.IsPassword = !showPasswordCheckbox.IsChecked;

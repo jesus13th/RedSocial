@@ -50,7 +50,7 @@ namespace RedSocial.Views {
             }
             User user = new User() { UserName = userName, Email = email, Password = password, DateOfBorn = born.ToString("d") };
             try {
-                await App.Repository.Create(user);
+                await App.RepositoryUsers.Create(user);
                 await this.DisplayToastAsync("El usuario se registro correctamente");
             } catch {
                 await this.DisplayToastAsync("Hubo un error al registrar al usuario");

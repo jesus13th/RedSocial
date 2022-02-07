@@ -17,5 +17,8 @@ namespace RedSocial.Models {
         public string Password { get; set; }
         [BsonElement("DateOfBorn")]
         public string DateOfBorn { get; set; }
+        [BsonElement("ProfileImg")]
+        public string ProfileImgName { get; set; }
+        public string GetProfileImg => @$"https://s3.us-east-2.amazonaws.com/spookydevstudio.redsocial/{ProfileImgName}";
     }
 }

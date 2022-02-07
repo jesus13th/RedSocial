@@ -5,16 +5,56 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Image Source="icon.png" WidthRequest="256" Margin="0, 50, 0, 0" HorizontalOptions="Center"/>
-                <Label Text="usuario completo" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold"/>
-                <Grid ColumnDefinitions="*, *, *" RowDefinitions="110, 110" Margin="20">
-                    <BoxView BackgroundColor="Red" Grid.Column="0" Grid.Row="0"/>
-                    <BoxView BackgroundColor="Blue" Grid.Column="1" Grid.Row="0"/>
-                    <BoxView BackgroundColor="Green" Grid.Column="2" Grid.Row="0"/>
-                    <BoxView BackgroundColor="Yellow" Grid.Column="0" Grid.Row="1"/>
-                    <BoxView BackgroundColor="Magenta" Grid.Column="1" Grid.Row="1"/>
-                    <BoxView BackgroundColor="Cyan" Grid.Column="2" Grid.Row="1"/>
+                <ImageButton BackgroundColor="Transparent" Aspect="AspectFill" Clicked="profileImg_Clicked" x:Name="profileImg" Source="{Binding User.GetProfileImg}" WidthRequest="300" HeightRequest="300" CornerRadius="150" Margin="0, 50, 0, 0" BorderWidth="5" BorderColor="White" HorizontalOptions="Center"/>
+                <Label Text="{Binding User.UserName}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold"/>
+                <Label Text="{Binding User.Email}" HorizontalOptions="Center" FontSize="Subtitle" FontAttributes="None"/>
+                
+                <Label Text="Amigos" Margin="5"/>
+                <Frame BorderColor="Black" Padding="5" Margin="5">
+                    <Grid ColumnDefinitions="*, *, *, *" RowDefinitions="100, 100">
+                        <BoxView BackgroundColor="Red" Grid.Column="0" Grid.Row="0"/>
+                        <BoxView BackgroundColor="Blue" Grid.Column="1" Grid.Row="0"/>
+                        <BoxView BackgroundColor="Green" Grid.Column="2" Grid.Row="0"/>
+                        <BoxView BackgroundColor="Chartreuse" Grid.Column="3" Grid.Row="0"/>
+                        <BoxView BackgroundColor="Yellow" Grid.Column="0" Grid.Row="1"/>
+                        <BoxView BackgroundColor="Magenta" Grid.Column="1" Grid.Row="1"/>
+                        <BoxView BackgroundColor="Cyan" Grid.Column="2" Grid.Row="1"/>
+                        <BoxView BackgroundColor="Bisque" Grid.Column="3" Grid.Row="1"/>
+                    </Grid>
+                </Frame>
+                
+                <Grid Margin="10" ColumnDefinitions="7*,1.5*,1.5*" RowDefinitions="60, auto">
+                    <Frame BorderColor="WhiteSmoke" Padding="0" CornerRadius="5">
+                        <Entry Grid.Column="0" x:Name="descriptionPostEntry" Grid.Row="0" TextColor="Black"/>
+                    </Frame>
+                    <ImageButton x:Name="uploadPhotoButton" Clicked="uploadPhotoButton_Clicked" BackgroundColor="Transparent" Source="add_photo.png" Grid.Column="1" Grid.Row="0"/>
+                    <ImageButton x:Name ="publishButton" Clicked="publishButton_Clicked" BackgroundColor="Transparent" Source="publish.png" Grid.Column="2" Grid.Row="0"/>
+                    <Image x:Name="postPrevImg" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="0"/>
                 </Grid>
+                <ListView x:Name="ListPosts" Margin="10" ItemsSource="{Binding Posts}" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Frame>
+                                        <Grid RowDefinitions="*,auto,*" ColumnDefinitions="1.5*,7*,1.5*" Margin="0">
+                                            <ImageButton Source="thumb_down_off.png" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" HeightRequest="50"/>
+                                            <Label Text="{Binding Description}" FontSize="Title" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                                            <ImageButton Source="thumb_up_off.png" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" HeightRequest="50"/>
+
+                                            <Image Source="{Binding ImageUrl}" Aspect="AspectFit" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
+
+                                            <Grid ColumnDefinitions="*,*" HeightRequest="60" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalOptions="Center">
+                                                <ImageButton CornerRadius="15" Source="comment.png" BackgroundColor="WhiteSmoke" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+                                                <ImageButton Source="share.png" BackgroundColor="WhiteSmoke" Grid.Row="0" Grid.Column="2" VerticalOptions="Center"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

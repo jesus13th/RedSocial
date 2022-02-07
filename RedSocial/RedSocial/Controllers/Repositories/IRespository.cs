@@ -4,15 +4,12 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-using MongoDB.Driver;
-using RedSocial.Models;
-
-namespace RedSocial.Controllers {
+namespace RedSocial.Controllers.Repositories {
     public interface IRepository<T> {
         Task<IEnumerable<T>> Read();
-        Task<T> Read(Expression<Func<User, bool>> filter);
+        Task<T> Read(Expression<Func<T, bool>> filter);
         Task Create(T user);
-        Task Update(T user);
-        Task Delete(string id);
+        Task Update(T user, Expression<Func<T, bool>> func);
+        Task Delete(Expression<Func<T, bool>> func);
     }
 }
